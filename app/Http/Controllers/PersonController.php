@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Person;
 use Illuminate\Http\Request;
 
 class PersonController extends Controller
@@ -19,7 +20,7 @@ class PersonController extends Controller
      */
     public function create()
     {
-        //
+        return view('add_new_person');
     }
 
     /**
@@ -27,7 +28,17 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $person = new Person();
+        $person->first_name = $request->input('first_name');
+        $person->last_name = $request->input('last_name');
+        $person->gender = $request->input('gender');
+        $person->date_of_birth = $request->input('date_of_birth');
+        $person->email = $request->input('email');
+        $person->phone_number = $request->input('phone_number');
+
+        $person->save();
+
+        return redirect()->route('persons.index')->with('success', 'Person added successfully');
     }
 
     /**
