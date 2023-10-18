@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +14,7 @@ use App\Http\Controllers\PersonController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', WelcomeController::class);
 
 Route::resource('persons', PersonController::class);
