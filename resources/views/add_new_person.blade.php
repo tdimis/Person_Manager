@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 
 <html>
-    
+
     <head>
-        <title>Add New User</title>
+        <title>Add New Person</title>
     </head>
 
     <body>
 
-        <h1>Add New User</h1>
+        <h1>Add New Person</h1>
         
         <form method="POST" action="{{ route('persons.store') }}">
-    
+        @csrf
 
             <div>
                 <label for="first_name">First Name:</label>
