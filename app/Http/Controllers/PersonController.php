@@ -12,7 +12,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        //
+        $persons = Person::all();
+        return view('all_persons', ['persons' => $persons]);
     }
 
     /**
@@ -38,7 +39,7 @@ class PersonController extends Controller
 
         $person->save();
 
-        return redirect()->route('persons.index')->with('success', 'Person added successfully');
+        return redirect()->route('persons.index');
     }
 
     /**
@@ -52,24 +53,26 @@ class PersonController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, Person $person)
     {
-        //
+        return view('update_person_details', ['person' => $person]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Person $person)
     {
-        //
+        $person->update($request->all());
+        return redirect()->route('persons.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy(Person $person)
+    { 
+        $person->delete();
+        return redirect()->route('persons.index');
     }
 }
