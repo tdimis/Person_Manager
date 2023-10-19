@@ -1,3 +1,9 @@
+<form method="GET" action="{{ route('persons.index') }}">
+    <input type="text" name="search" placeholder="Search persons">
+    <button type="submit">Search</button>
+</form>
+
+
 @if($persons->count() === 0)
     <h1>No Persons found</h1>
     <a href="{{ route('persons.create') }}">Add New Person</a>
@@ -24,3 +30,5 @@
 </button>
 
 @endif
+
+{{$persons->links()}}
