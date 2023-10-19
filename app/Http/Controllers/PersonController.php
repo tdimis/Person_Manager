@@ -4,15 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
+use function Laravel\Prompts\search;
 
 class PersonController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $persons = Person::all();
+        $search = $request->input('search');
+            if($search){
+                $persons = Person::where('first_name', 'LIKE', "%$search%")
+                ->orWhere('last_name', 'LIKE', "%$search%")
+                ->orWhere('gender', 'LIKE', "%$search%")
+                ->paginate(5);
+
+            }else{
+                $persons = Person::paginate(5);
+                }
         return view('all_persons', ['persons' => $persons]);
     }
 
@@ -29,13 +41,21 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
+
+        $rules = [
+            'first_name' => 'required|alpha_num|max:15',
+            'last_name' => 'required|alpha_num|max:15',
+            'gender' => ['nullable', Rule::in(['male', 'female'])],
+            'date_of_birth' => 'nullable|date',
+            'email' => 'required|email|unique:persons,email',
+            'phone_number' => 'nullable|integer|',
+        ];
+    
+        $validatedData = $request->validate($rules);
+
         $person = new Person();
-        $person->first_name = $request->input('first_name');
-        $person->last_name = $request->input('last_name');
-        $person->gender = $request->input('gender');
-        $person->date_of_birth = $request->input('date_of_birth');
-        $person->email = $request->input('email');
-        $person->phone_number = $request->input('phone_number');
+
+        $person->fill($validatedData);
 
         $person->save();
 
@@ -63,7 +83,22 @@ class PersonController extends Controller
      */
     public function update(Request $request, Person $person)
     {
-        $person->update($request->all());
+        $rules = [
+            'first_name' => 'required|alpha_num|max:15',
+            'last_name' => 'required|alpha_num|max:15',
+            'gender' => ['nullable', Rule::in(['male', 'female'])],
+            'date_of_birth' => 'nullable|date',
+            'phone_number' => 'nullable|integer|',
+        ];
+
+        if ($request->input('email') !== $person->email) {
+            return redirect()->back()->with('error', 'Your email is already in use.');
+        }
+
+        $validatedData = $request->validate($rules);
+
+        $person->update($validatedData);
+        
         return redirect()->route('persons.index');
     }
 
