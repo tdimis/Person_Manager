@@ -15,6 +15,4 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 
-Route::get('/', WelcomeController::class);
-
 Route::resource('persons', PersonController::class);
