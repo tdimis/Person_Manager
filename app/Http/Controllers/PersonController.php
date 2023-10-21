@@ -88,14 +88,15 @@ class PersonController extends Controller
             'last_name' => 'required|alpha_num|max:15',
             'gender' => ['nullable', Rule::in(['male', 'female'])],
             'date_of_birth' => 'nullable|date',
-            'phone_number' => 'nullable|integer|',
+            'phone_number' => 'nullable|regex:/^[0-9()-]+$/',
+            'email' => 'required|email|unique:persons,email,' . $person->id,
         ];
 
-        if ($request->input('email') !== $person->email) {
-            return redirect()->back()->with('error', 'Your email is already in use.');
-        }
+        $customMessages = [
+            'phone_number.regex' => 'The phone number must contain only numbers, parentheses, and hyphens (e.g., (555) 555-5555).',
+        ];
 
-        $validatedData = $request->validate($rules);
+        $validatedData = $request->validate($rules,$customMessages);
 
         $person->update($validatedData);
         
