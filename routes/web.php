@@ -15,4 +15,8 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('persons.index');
+});
+
 Route::resource('persons', PersonController::class);
