@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
     <head>
         <title>Add Person</title>
     </head>
@@ -56,3 +58,40 @@
         </div>
     </body>
 </html>
+
+<style>
+    .error-container {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 15px;
+        text-align: right;
+    }
+
+    .error-message {
+        display: inline-block;
+        margin-right: 10px;
+        animation: fadeOut 8s forwards;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+</style>
+
+<div class="error-container">
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <div class="alert alert-danger error-message">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
+        </div>
