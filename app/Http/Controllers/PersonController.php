@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 use function Laravel\Prompts\search;
+use App\Http\Requests\PersonStoreRequest;
 
 class PersonController extends Controller
 {
@@ -16,15 +17,18 @@ class PersonController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-            if($search){
-                $persons = Person::where('first_name', 'LIKE', "%$search%")
-                ->orWhere('last_name', 'LIKE', "%$search%")
-                ->orWhere('gender', 'LIKE', "%$search%")
-                ->paginate(5);
-
-            }else{
-                $persons = Person::paginate(5);
-                }
+    
+        $persons = Person::query();
+    
+        if ($search) {
+            $persons->where('first_name', 'LIKE', "%$search%")
+                    ->orWhere('last_name', 'LIKE', "%$search%")
+                    ->orWhere('gender', 'LIKE', "%$search%");
+        }
+        $persons->orderBy('created_at', 'desc');
+    
+        $persons = $persons->paginate(5);
+    
         return view('all_persons', ['persons' => $persons]);
     }
 
@@ -48,10 +52,14 @@ class PersonController extends Controller
             'gender' => ['nullable', Rule::in(['male', 'female'])],
             'date_of_birth' => 'nullable|date',
             'email' => 'required|email|unique:persons,email',
-            'phone_number' => 'nullable|integer|',
+            'phone_number' => 'nullable|regex:/^[0-9()-]+$/',
+        ];
+
+        $customMessages = [
+            'phone_number.regex' => 'The phone number must contain only numbers, parentheses, and hyphens (e.g., (555) 555-5555).',
         ];
     
-        $validatedData = $request->validate($rules);
+        $validatedData = $request->validate($rules,$customMessages);
 
         $person = new Person();
 
@@ -59,7 +67,7 @@ class PersonController extends Controller
 
         $person->save();
 
-        return redirect()->route('persons.index');
+        return redirect()->route('persons.index')->with('add_message', 'Person added successfully!');
     }
 
     /**
@@ -100,7 +108,7 @@ class PersonController extends Controller
 
         $person->update($validatedData);
         
-        return redirect()->route('persons.index');
+        return redirect()->route('persons.index')->with('update_message', 'Person updated successfully.');
     }
 
     /**
@@ -109,6 +117,6 @@ class PersonController extends Controller
     public function destroy(Person $person)
     { 
         $person->delete();
-        return redirect()->route('persons.index');
+        return redirect()->route('persons.index')->with('delete_message', 'Person deleted successfully!');
     }
 }
