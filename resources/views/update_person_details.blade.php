@@ -47,30 +47,45 @@
                             <button class="btn btn-primary" type="submit">Save</button>
                         </div>
                     </form>
-                    
                 </div>
             </div>
-        </div>
-        <style>
-        .error-container {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            padding: 15px;
-            text-align: right;
-        }
-        .error-message {
-            display: inline-block;
-            margin-right: 10px;
-        }
-        </style>
-        <div class="error-container">
-            @foreach($errors->all() as $error)
-                <div class="alert alert-danger error-message">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    {{ $error }}
-                </div>
-            @endforeach
-        </div>
+        </div>   
    </body>
 </html>
+
+<style>
+    .error-container {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 15px;
+        text-align: right;
+    }
+
+    .error-message {
+        display: inline-block;
+        margin-right: 10px;
+        animation: fadeOut 8s forwards;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+</style>
+
+<div class="error-container">
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger error-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                    {{ $error }}
+            </div>
+        @endforeach
+    @endif
+</div>
