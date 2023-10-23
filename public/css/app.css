@@ -1,0 +1,29 @@
+
+.error-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 15px;
+    text-align: right;
+}
+
+.error-message {
+    display: inline-block;
+    margin-right: 10px;
+    animation: fadeOut 8s forwards;
+    
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.is-invalid {
+    border: 1px solid red;
+}
