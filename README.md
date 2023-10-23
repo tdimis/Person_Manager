@@ -96,6 +96,6 @@ Each record has their own edit and delete buttons. Use them to update your perso
 Press the update button and you will be redirected to a new form to update your specific person.<br><br> 
 Ensure that you follow the requirements of the form's input or validations will alert you.<br><br>
 Also you have the ability to search a person based on First Name, Last Name and Gender.<br><br>
-The search bar is up on the left side out of the table. Give it a try!
+The search bar is up on the left side out of the table. <br><br>Give it a try!
 
    
