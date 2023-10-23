@@ -89,13 +89,13 @@ Your application will be available at http://localhost:8000.
 You can now access and use the Person Management CRUD Web Application in your browser. Visit http://localhost:8000
 
 ## Using the Application
-At first time you will see a basic empty table. Press the Add Person button at the right up corner out of the table to add your first persons.
-You will be redirected to a new form to add you first person. Ensure that you follow the requirements of the form's inputs or validations will alert you.
-After you create your first record, at the right side of table you will see two buttons, the edit button and delete button.
-Each record has their own edit and delete buttons. Use them to update your person's details or to delete them.
-Press the update button and you will be redirected to a new form to update your specific person. 
-Ensure that you follow the requirements of the form's input or validations will alert you.
-Also you have the ability to search a person based on First Name, Last Name and Gender.
+At first time you will see a basic empty table.<br><br>Press the Add Person button at the right up corner out of the table to add your first persons.<br><br>
+You will be redirected to a new form to add you first person. <br><br>Ensure that you follow the requirements of the form's inputs or validations will alert you.<br><br>
+After you create your first record, at the right side of table you will see two buttons, the edit button and delete button.<br><br>
+Each record has their own edit and delete buttons. Use them to update your person's details or to delete them.<br><br>
+Press the update button and you will be redirected to a new form to update your specific person.<br><br> 
+Ensure that you follow the requirements of the form's input or validations will alert you.<br><br>
+Also you have the ability to search a person based on First Name, Last Name and Gender.<br><br>
 The search bar is up on the left side out of the table. Give it a try!
 
    
