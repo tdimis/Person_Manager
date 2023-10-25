@@ -83,10 +83,7 @@ php artisan migrate
 ```bash
 php artisan serve
 ```
-Your application will be available at http://localhost:8000.
-
-## Usage
-You can now access and use the Person Management CRUD Web Application in your browser. Visit http://localhost:8000
+You can now access and use the Person Management CRUD Web Application in your browser.<br><br>Visit http://localhost:8000 to view the application.
 
 ## Using the Application
 At first time you will see a basic empty table.<br><br>Press the Add Person button at the right up corner out of the table to add your first persons.<br><br>
