@@ -24,8 +24,8 @@
                                 <label for="gender" class="form-label">Gender:</label>
                                 <select name="gender" id="gender" class="form-select form-select-sm" aria-label="Small select example">
                                     <option value="">Select Gender</option>
-                                    <option value="male" @if(old('gender') === 'male') selected @endif>Male</option>
-                                    <option value="female" @if(old('gender') === 'male') selected @endif>Female</option>
+                                    <option value="male" @if(old('gender', $person->gender) === 'male') selected @endif>Male</option>
+                                    <option value="female" @if(old('gender', $person->gender) === 'female') selected @endif>Female</option>
                                 </select>
                             </div>
                             <div class="col-5">
