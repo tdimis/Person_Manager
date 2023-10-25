@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@extends('layout')
+    
+    @section('title', 'Add Person')
 
-    <head>
-        <title>Add Person</title>
-    </head>
-    <body>
+
+    @section('add_new_person_body')
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-6">
@@ -57,16 +53,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="error-container">
-            @if($errors->any())
-                @foreach($errors->all() as $error)
-                    <div class="alert alert-danger error-message">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        {{ $error }}
-                    </div>
-                @endforeach
-            @endif
         </div>
     </body>
 </html>

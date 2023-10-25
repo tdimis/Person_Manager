@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <head>
-        <title>List Of Persons</title>
-    </head>
+@extends('layout')
+    
+    @section('title', 'List Of Persons')
 
 
-    <body>
+    @section('all_persons_body')
 
         <form method="GET" action="{{ route('persons.index') }}" style="padding-left: 10px;">
             <input type="text" name="search" placeholder="Search persons">
