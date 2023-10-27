@@ -17,6 +17,8 @@ class PersonController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
     
         $persons = Person::query();
     
@@ -25,6 +27,15 @@ class PersonController extends Controller
                     ->orWhere('last_name', 'LIKE', "%$search%")
                     ->orWhere('gender', 'LIKE', "%$search%");
         }
+
+        if($first_name) {
+        $persons->where('first_name', 'LIKE', "%$first_name%");
+        }
+
+        if($last_name) {
+            $persons->where('last_name', 'LIKE', "%$last_name%");
+        }
+
         $persons->orderBy('created_at', 'desc');
     
         $persons = $persons->paginate(5);
