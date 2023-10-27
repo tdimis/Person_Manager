@@ -86,13 +86,21 @@ php artisan serve
 You can now access and use the Person Management CRUD Web Application in your browser.<br><br>Visit http://localhost:8000 to view the application.
 
 ## Using the Application
-At first time you will see a basic empty table.<br><br>Press the Add Person button at the right up corner out of the table to add your first persons.<br><br>
-You will be redirected to a new form to add you first person. <br><br>Ensure that you follow the requirements of the form's inputs or validations will alert you.<br><br>
-After you create your first record, at the right side of table you will see two buttons, the edit button and delete button.<br><br>
-Each record has their own edit and delete buttons. Use them to update your person's details or to delete them.<br><br>
-Press the update button and you will be redirected to a new form to update your specific person.<br><br> 
-Ensure that you follow the requirements of the form's input or validations will alert you.<br><br>
-Also you have the ability to search a person based on First Name, Last Name and Gender.<br><br>
-The search bar is up on the left side out of the table. <br><br>Give it a try!
+### Below you will find how to use the application as well as what is contained in it
+#### View all persons:
+At first time you will see a basic empty table with persons columns. Here is the main list of all persons. <br>Every time that you will add, update or delete a person you'll be redirected to this main list automatically.<br>
+Also each time that you will add a new person, at the right side of table you will see two buttons, the edit and delete buttons.<br><br>
+#### Add a person:
+Press the Add Person button at the top right corner out of the table to add your first persons.<br>
+You will be redirected to a new form to add you first person. <br>Ensure that you follow the requirements of the form's inputs or validations will alert you. <br>When you have filled up the form click the save button.<br><br>
+#### Update a person:
+Click on edit button. You'll be redirected to a new form to update your specific person's details. <br>Ensure that you follow the requirements of the form's inputs or validations will alert you and your proccess will not saved. <br>When you are ready click the save button to see the changes in your main list or click cancel button to go back.<br><br>
+#### Delete a person:
+Click on delete button for the record that you don't want to your list. <br>The page will be refreshed and your record now has been removed.<br><br>
+#### Search for a person:
+You can search for a person by using the search bar on the left side out of the table.<br>
+In the search bar you can only search by First Name, Last Name or Gender of the person you want to search for.<br><br>
+
+## Thanks for reading!
 
    
