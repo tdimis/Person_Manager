@@ -6,9 +6,26 @@
     @section('all_persons_body')
 
         <form method="GET" action="{{ route('persons.index') }}" style="padding-left: 10px;">
-            <input type="text" name="search" placeholder="Search persons">
-            <button type="submit">Search</button>
+            <input type="text" name="search" placeholder="Search persons" class="btn btn-secondary" style ="padding: 6px 12px; background-color: transparent; color: #495057;">
+                <button type="submit" class="btn btn-secondary">Search</button>
+                <button type="button" id="showAdvancedSearchBtn" class="btn btn-primary" style ="padding: 6px 12px;">Advanced Search</button>
+                    <div id="advancedSearchForm" style="display: none; margin-top: 10px;">
+                        <form method="GET" action="{{ route('persons.index') }}">
+                            <input type="text" name="first_name" placeholder="First Name" class="btn btn-secondary" style ="padding: 6px 12px; background-color: transparent; color: #495057;">
+                            <input type="text" name="last_name" placeholder="Last Name" class="btn btn-secondary" style ="padding: 6px 12px; background-color: transparent; color: #495057;">
+                        </form>
+                        <button type="submit" class="btn btn-primary">Apply Filters</button>
+
+                        <script>
+                            document.getElementById('showAdvancedSearchBtn').addEventListener('click', function () {
+                            let advancedSearchForm = document.getElementById('advancedSearchForm');
+                            advancedSearchForm.style.display = advancedSearchForm.style.display === 'none' ? 'block' : 'none';
+                            });
+                        </script>
+                    </div>
         </form>
+        
+
 
         <div class="container-fluid">
             <div style="display: flex; justify-content: space-between; align-items: center;">
