@@ -65,7 +65,10 @@
                 @endif
             </tbody>
         </table>
-        </div>
+            @if($persons->isEmpty())
+                <a href="{{ route('persons.index') }}" class="btn btn-primary">Go Back</a>
+            @endif
+    </div>
 
         <div class="error-container">
             @if(session('update_message'))
