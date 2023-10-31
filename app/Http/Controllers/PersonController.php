@@ -29,7 +29,7 @@ class PersonController extends Controller
         }
 
         if($first_name && $last_name) {
-            $persons = $persons->where('first_name', 'LIKE', "%$first_name%")
+            $persons->where('first_name', 'LIKE', "%$first_name%")
                     ->where('last_name', 'LIKE', "%$last_name%")
                     ->get();
         }
