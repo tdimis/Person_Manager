@@ -28,12 +28,10 @@ class PersonController extends Controller
                     ->orWhere('gender', 'LIKE', "%$search%");
         }
 
-        if($first_name) {
-        $persons->where('first_name', 'LIKE', "%$first_name%");
-        }
-
-        if($last_name) {
-            $persons->where('last_name', 'LIKE', "%$last_name%");
+        if($first_name && $last_name) {
+            $persons = $persons->where('first_name', 'LIKE', "%$first_name%")
+                    ->where('last_name', 'LIKE', "%$last_name%")
+                    ->get();
         }
 
         $persons->orderBy('created_at', 'desc');
