@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-10 text-center">
                             <button class="btn btn-primary" type="submit">Add New Person</button>
-                            <a href="{{ route('persons.store')  }}" class="btn btn-secondary">Cancel</a>
+                            <a href="{{ route('persons.index')  }}" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

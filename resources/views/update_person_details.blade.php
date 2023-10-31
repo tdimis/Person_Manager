@@ -3,7 +3,7 @@
     @section('title', 'Update Person')
 
 
-    @section('update_peron_details_body')
+    @section('update_person_details_body')
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-6">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-10 text-center">
                             <button class="btn btn-primary" type="submit">Save</button>
-                            <a href="{{ route('persons.store')  }}" class="btn btn-secondary">Cancel</a>
+                            <a href="{{ route('persons.index')  }}" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>
