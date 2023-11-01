@@ -68,8 +68,8 @@
                                 </div>
 
                                 <div style="display: inline-block;">
-                                    <form method="POST" action="{{ route('persons.destroy', ['person' => $person]) }}">
-                                        @csrf
+                                    <form method="POST" action="{{ route('persons.destroy', $person) }}">
+                                        @csrf                                                                                                                                           
                                         @method('DELETE')
                                         <button type="submit" title="Delete" data-toggle="tooltip" style="color: red;">
                                             <i class="material-icons">&#xE872;</i>
